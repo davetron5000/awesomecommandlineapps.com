@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Daveblog 5000]]></title>
+  <link href="http://www.davetron5000.com/atom.xml" rel="self"/>
+  <link href="http://www.davetron5000.com/"/>
+  <updated>2011-12-12T18:37:17-05:00</updated>
+  <id>http://www.davetron5000.com/</id>
+  <author>
+    <name><![CDATA[David Bryant Copeland]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
