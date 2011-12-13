@@ -123,9 +123,8 @@ Ruby Conf 2011.</p>
 <p>Yes and no.  Methadone isn&#8217;t a re-implementation of command-line option parsing.  It&#8217;s barely a DSL, making use of almost no
 meta-programming,, <code>class_eval</code>, or other craziness.  It&#8217;s a pure Ruby proxy to <code>OptionParser</code>, with some helper methods.  It makes
 idiomatic and canonical option parsing and command-line app design as seemless as possible, but doesn&#8217;t force <em>any</em> of itself one
-you.  In this post, I&#8217;ll derive its syntax while showing you the basics of how to structure a simple command-line app.  To dig
-deeper, you&#8217;ll have to <a href="http://www.awesomecommandlineapps.com">buy the book</a> (but never fear, if you don&#8217;t like Methadone, it only takes up a few scant pages at
-the end).</p>
+you.  In this post, I&#8217;ll derive its syntax while showing you the basics of how to structure a simple command-line app.<br/>
+You&#8217;ll have to <a href="http://www.awesomecommandlineapps.com">buy the book</a> to dig deeper<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup>.</p>
 
 <h2>Basic Command-line App Structure</h2>
 
@@ -493,6 +492,17 @@ comes with some add-ons to Aruba to let you test-drive your user interface.</p>
 <p>Of course!  Methadone&#8217;s still in a pre-release state right now, although it&#8217;s being used in production.  The parts that are there
 are solid, completely tested and good to go.  I just want to add some more sugar before calling it V1.  Namely, I want to make it
 easy to write shell scripts in Ruby.  Something like <code>FileUtils</code> but better.</p>
+
+<hr />
+
+<div class="footnotes">
+    <ol>
+        <li id='fn:1'>never fear, if you don&#8217;t like Methadone, it only takes up a few scant pages at the end. <a href='#fnref:1' rev='footnote'>↩</a></li>
+    </ol>
+</div>
+
+
+
 </div>
 
 

@@ -29,9 +29,8 @@ Ruby Conf 2011.
 Yes and no.  Methadone isn't a re-implementation of command-line option parsing.  It's barely a DSL, making use of almost no
 meta-programming,, `class_eval`, or other craziness.  It's a pure Ruby proxy to `OptionParser`, with some helper methods.  It makes
 idiomatic and canonical option parsing and command-line app design as seemless as possible, but doesn't force *any* of itself one
-you.  In this post, I'll derive its syntax while showing you the basics of how to structure a simple command-line app.  To dig
-deeper, you'll have to [buy the book][book] (but never fear, if you don't like Methadone, it only takes up a few scant pages at
-the end).
+you.  In this post, I'll derive its syntax while showing you the basics of how to structure a simple command-line app.  
+You'll have to [buy the book][book] to dig deeper{% fn_ref 1 %}.
 
 ## Basic Command-line App Structure
 
@@ -271,6 +270,12 @@ comes with some add-ons to Aruba to let you test-drive your user interface.
 Of course!  Methadone's still in a pre-release state right now, although it's being used in production.  The parts that are there
 are solid, completely tested and good to go.  I just want to add some more sugar before calling it V1.  Namely, I want to make it
 easy to write shell scripts in Ruby.  Something like `FileUtils` but better.
+
+----
+
+{% footnotes %}
+  {% fn never fear, if you don't like Methadone, it only takes up a few scant pages at the end. %}
+{% endfootnotes %}
 
 [book]: http://www.awesomecommandlineapps.com
 [optparse]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/optparse/rdoc/OptionParser.html
