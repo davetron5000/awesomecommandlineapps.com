@@ -4,31 +4,30 @@ layout: post
 ---
 
 I've spent the last year [writing a book][book] on building awesome command-line applications in Ruby.  Over the course of
-writing it, I"ve used a lot of Ruby libraries for building command-line apps, and none of them work quite right.  In my book, I
-spent significant time on [OptionParser][optparse], since it's builtin, and [GLI][gli], since I wrote it.
+writing it, I've used a lot of Ruby libraries for building command-line apps, and none of them work quite right.  In my book, I
+spent significant time on [OptionParser][optparse], since it's builtin, and [GLI][gli], since I wrote it (and since it's actually very
+fully-featured compare to the alternatives).
 
-I just finished up an appendix where I used [main][main], [thor][thor], and [trollop][trollop] to build my running examples in
-the book.  I did this for a few reasons:
+I just finished up an appendix where I showed alternate implementations of the running examples using [main][main], [thor][thor], and [trollop][trollop].  I did this for a few reasons:
 
 * These tools are popular, and people have asked if they'd be included
 * They are, by and large, very different from how `OptionParser` and GLI work
 * I wanted to give them a real shakedown
 
-I also surveyed many other tools, but, alas, I can't include everything.  Each of these tools had common theme, which was to
-avoid the boilerplate of `OptionParser`, and make it really easy to parse command-line arguments.  They all have done this at quite
-a large cost.  All of them are less powerful and extensible than `OptionParser`, and only slightly more compact (or, in the case of
-main, way less compact).
+I also surveyed many other tools, but, alas, I couldn't include everything.  Each of these tools have a common theme, which is to
+avoid the boilerplate of `OptionParser`, and make it really easy to parse command-line arguments.  They all have done this, but at 
+a cost.  All of them are less powerful and extensible than `OptionParser`, and only slightly more compact (or, in the case of
+main, more verbose).
 
-Enter [methadone][methadone], which I developed while working on the book and developing my [talk][gogaruco-talk] for Golden Gate
-Ruby Conf 2011.
+Enter [methadone][methadone], which has all of `OptionParser`'s power, but the compactness of these other frameworks.
 
 <!-- more -->
 
 ## Another command-line option parser?
 
 Yes and no.  Methadone isn't a re-implementation of command-line option parsing.  It's barely a DSL, making use of almost no
-meta-programming,, `class_eval`, or other craziness.  It's a pure Ruby proxy to `OptionParser`, with some helper methods.  It makes
-idiomatic and canonical option parsing and command-line app design as seemless as possible, but doesn't force *any* of itself one
+meta-programming, `class_eval`, or other craziness.  It's a plain Ruby proxy to `OptionParser`, with some helper methods.  It makes
+idiomatic option parsing and command-line app design as seemless as possible, but doesn't force *any* of itself on
 you.  In this post, I'll derive its syntax while showing you the basics of how to structure a simple command-line app.  
 You'll have to [buy the book][book] to dig deeper{% fn_ref 1 %}.
 
@@ -37,7 +36,7 @@ You'll have to [buy the book][book] to dig deeper{% fn_ref 1 %}.
 Most command-line apps start off with parsing the command-line with `OptionParser` (which typically consists of setting values into
 some `Hash`), defining a few helper methods, and then, at the end, implementing the main logic of the program:
 
-```ruby
+```ruby Typical Command-Line App Structure
 #!/usr/bin/env ruby
 
 require 'optparse'
@@ -71,9 +70,9 @@ puts "Starting program" if options[:verbose]
 # etc, the main logic of your program
 ```
 
-Yuck.  The boilerplate option parsing is bad enough, but the structure is all wrong.  The interesting stuff is all the way at the bottom; you have to read the thing in the wrong order.  At the very least, you should use a main method:
+Yuck.  The boilerplate option parsing is bad enough, but the structure is all wrong.  The interesting stuff is all the way at the bottom; you have to read the thing in the wrong order.  At the very least, you should extract the core logic into a `main` method, put that at the top, and call it at the end.
 
-```ruby
+```ruby Extracting Logic to a Main Method
 #!/usr/bin/env ruby
 
 require 'optparse'
@@ -112,9 +111,10 @@ parser.parse!
 exit main(ARGV)
 ```
 
-Of course, we might raise an exception.  We might *want* to, but this isn't amateur hour and we can't have our app vomiting out a backtrace.  So, we wrap our call to `main`:
+Now, we can see, immediately upon opening the file, the main thing this app is doing.
+Of course, an exception might be raised.  We may even do it on purpose, but we can't have the app vomiting a stack trace to the user, so we wrap our call to `main` in a `begin..rescue` block:
 
-```ruby
+```ruby Handling Exceptions
 begin
   exit main(ARGV)
 rescue => ex
@@ -125,11 +125,17 @@ end
 
 ## Methadone's Main Method
 
-We now have a pretty canonical structure for any simple command-line app.  We don't want to include this every time, so we'll use
-the first feature of Methadone, which is the `main` method:
+The structure we just saw is pretty decent, and gives us, and future contributors, an easy way to follow the code.  Users also
+get a pretty decent experience and never have to see a backtrace.
+
+This brings us to the first feature of methadone.  Instead of including this boilerplate every time, we extract it into a module, 
+`Methadone::Main`, which gives us two methods: `main` and `go!`.
+
+`main` takes a block that represents our main method from before.  `go!` calls that block, handling the exceptions for us.  Our app now looks
+like so:
 
 
-```ruby
+```ruby Methadone's Boilerplate Removal
 #!/usr/bin/env ruby
 
 require 'methadone'
@@ -146,63 +152,116 @@ end
 go!
 ```
 
-This does a few things for us.  `go!` will execute the contents of the block given to `main`.  It will extract the contents of
-`ARGV` leftover after parsing and pass them to the block.  Since they're passed as individual arguments, you don't have to call `shift` a bunch of times.  Just name your parameters whatever, and
-Metahdone takes care of it.   If your main block raises an exception, `go!` will handle catching it, messaging the user without a backtrace, and exiting nonzero.
+`go!` will extract the contents of `ARGV` leftover after parsing and pass them to the block.  Since they're passed as individual arguments, you don't have to call `shift` a bunch of times on some array.  Just name your parameters whatever, and Metahdone takes care of it.   If your main block raises an exception, `go!` will handle catching it, messaging the user without a backtrace, and exiting nonzero{% fn_ref 2 %}.
 
 ## Parse Options with no Loss of Power
 
-Of course, that option parsing code is still annoying, especially since we're just setting it into an options hash.
+Notice how we can still safely use `OptionParser`.  Methadone doesn't hide that.  As we'll see, it provides some more features to make option
+parsing even easier.  First, we can get rid of the `options` `Hash` as well as the actual creation of the `OptionParser` instance.
 
-Methadone's `Main` module exposes some helper methods.  One of them is called `on`, and it works exactly like `OptionParser`'s
-`on` method:
+Methadone provides two methods: `options` and `opts`.  `options` provides access to a `Hash` that we can use inside our `main` block.  `opts`
+provides access to the underlying `OptionParser` instance that is automatically created.  We can now remove a few lines of code, losing *no*
+functionality:
 
-```ruby
-main do
-  # logic
-end
+```ruby Methadone Provides an OptionParser and Options Hash for You
+opts.banner 'My awesome app'
 
-options = {}
-
-on("-u USER","--username","The username") do |user|
+opts.on("-u USERNAME","--username","The username") do |user|
   options[:username] = user
 end
+
+opts.on("-v","--verbose","Be verbose") do 
+  options[:verbose] = true
+end
 ```
 
-Methadone maintains an instance of `OptionParser`, and this will pass through to it.  That means that validations via list or
-regex will work just fine.  Type conversions pass right on through; you can even add your own via `opts.accept`.
+Given that `opts` is baked in, there's no need to even use that for our cases, because Methadone provides a method `on` that proxies to the
+underlying `OptionParser`.  You can still use `opts` to access anything else, but for declaring command-line options, just call `on`
+directly:
 
-Of course, since we are almost always just taking
-the flag argument and putting it into a `Hash`, Methadone takes care of that for us.  The following code is identical to the code
-above:
+```ruby The on Method Proxies to OptionParser
+opts.banner 'My awesome app'
 
-```ruby
-on("-u USER","--username","The user name")
+on("-u USERNAME","--username","The username") do |user|
+  options[:username] = user
+end
+
+on("-v","--verbose","Be verbose") do 
+  options[:verbose] = true
+end
 ```
 
-This works because Methadone exposes a method `options`, which returns the `Hash` of the current options.  It's available inside
-our `main` block, so we can access the values the user used on the command-line.  Of course, if we need to do something fancy, we can do anything that `OptionParser` can do, and if we set values in `options`, they'll stick.
+You can see, as we peel off layers of boilerplate, Methadone hides nothing; it's just making commonly-written code easier to write. At any time,
+you can abandon it and go back to the old way.  
+
+So far, we've only saved a few lines of code and a couple of characters.  That's because we haven't seen the true power of the `on` method.
+`on` is more than just a proxy to `OptionParser`.  It does one additional thing for us:  it we omit the block, Methadone will provide one 
+for us.  That Methadone-provided block simply sets the value from the command-line in the
+`options` `Hash` automatically.  Meaning that the above code is equivalent to this:
+
+```ruby The on Method Provides Idiomatic Behavior
+opts.banner 'My awesome app'
+
+on("-u USERNAME","--username","The username")
+on("-v","--verbose","Be verbose")
+```
+
+Not bad!  This means that *all* we need to do, assuming we're doing things idiomatically, is to give `on` the names of our options and their
+descriptions.  Note, however, this *still* proxies to `OptionParser`'s `on` method.  Suppose we only allowed usernames with all lower-case
+characters?  In Methadone, as in `OptionParser`, you pass in a `Regexp`:
+
+```ruby Validation using Regular Expressions
+on("-u USERNAME","--username","The username",/^[a-z]+$/)
+on("-v","--verbose","Be verbose")
+```
+
+Suppose you want the value type-converted for you?  We have access to the underlying `OptinParser`, so we can set that up easily:
+
+```ruby Custom Type Conversions
+opts.accept(User) do |username|
+  User.find_by_name(username)
+end
+
+on("-u USERNAME","--username","The username",User)
+on("-v","--verbose","Be verbose")
+```
 
 ## Do the Right Thing
 
-Because we're using `OptionParser`, we get all the benefits of the great help system that `OptionParser` provides.  A key part of
-that system is the _banner_.  The banner tells the user what the program is for and how to invoke it.  `OptionParser` provides a
-reasonable default, but it's not good enough.   We want:
+You've noticed that we are still setting our banner manually.  You've also noticed our banner is kinda lame;  It doesn't say what our app
+does nor does it give an overview of how to use it.  It should look like so:
 
     $ awesome_app.rb --help
     Does so many awesome things, you won't believe it.
 
     Usage:  awesome_app.rb [options] thing other_thing [optional_thing]
 
-We can make this with a big, fat string, but why should we?  Methadone knows that our app takes options, and it knows the name of
-our app, so let's just tell it the missing information:
+Since Methadone knows that our app takes options (by virtue of us having declared them), and it knows the name of
+our app, we just need to tell it what our app does, and it will assemble the banner for 
+us{% fn_ref 3 %}.
 
-```ruby
+```ruby Automatically Generate the Banner
 main do |thing,other_thing,optional_thing|
   # logic
 end
 
-opts.on("-u USER","--username","The user name")
+on("-u USER","--username","The user name")
+on("-v","--verbose","Be verbose")
+
+description "Does so many awesome things, you won't believe it."
+
+go!
+```
+
+Finally, you'll note that our `main` block takes three arguments.  Methadone provides the method `arg` that allows us to name them (in the language the user will understand) and indicate which are required and which are optional. Methadone will put this information into the banner, and will fail if any required arguments are missing:
+
+```ruby Describing the Arguments
+main do |thing,other_thing,optional_thing|
+  # logic
+end
+
+on("-u USER","--username","The user name")
+on("-v","--verbose","Be verbose")
 
 description "Does so many awesome things, you won't believe it."
 
@@ -213,68 +272,77 @@ arg :optional_thing, :optional
 go!
 ```
 
+Now, the banner looks like we'd like it, and we didn't have to do much more than describe our program.  You can
+even bootstrap your app using the `methadone` command-line app.  It will create an empty app, using this structure, with
+some helpful comments to let you describe your UI easily and quickly.  But it won't prevent you from doing any sort of crazy thing with
+`OptionParser` that you need to.
 
-Not only will Methadone automatically create your banner, but it will complain if the first two, required, arguments are missing.
-Don't like that?  Just call `banner=` and set the banner to whatever you want.  Methadone doesn't care.  It's just there to help.
-
-Methadone makes it dead simple to write only what you need to, but doesn't stop you from unleashing the full power of
-`OptionParser`, or doing things a different way, if you like.
 
 ## Sweet, Sweet Sugar
 
 But wait!  There's more!  Complex programs start to look like this:
 
-```ruby
+```ruby Complex, Annoying Code
 if have_connection
   # puts "got a connection"
   file = request_data
   puts "Got data"
   if file.nil?
-    STDERR.puts "Data was nil!?!?"
+    STDERR.puts "Data was nil?"
   end
 end
 # puts "Moving on"
 ```
 
-You've got a mix of commented-out debug statements, informational messages and teadiously long error messages going to the
-standard error.  Methadone includes a special `Logger` instance that does away with all this:
+You've got a mix of commented-out debug statements, informational messages and tediously long statements sending error messages to the
+standard error.  Methadone includes a special `Logger` instance, along with some helper methods, that does away with all this:
 
-```ruby
+```ruby Cleaner Messaging
+include Methdone::CLILogging # sets up Logger, provides helper methods
+
 if have_connection
-  debug "got a connection"
+  debug "got a connection"   # Calls logger.debug 
   file = request_data
-  info "Got data"
+  info "Got data"            # Calls logger.info
   if file.nil?
-    error "Data was nil!?!?"
+    error "Data was nil?"    # Calls logger.error
   end
 end
-debug "Moving on"
+debug "Moving on"            # Calls logger.debug
 ```
 
-By default, `debug` messages don't go anywhere.  `info` goes to the standard output and
-`warn`, `error`, and `fatal` go to the standard error.  Theses messages are _unformatted_ and ready for consumption by the 
-user (i.e. they are not maven-style enterprise logging with timestamps; they go to the console formatted for a human).
-Messages automatically go to the right stream.  Of course, if you redirect either of these to a file, you get full, complete
-timestamped log messages.  Perfect for use in cron.
+The logger is set up as follows:
 
-## Even this is too much to type
+* `debug` messages don't go anywhere.  
+* `info` goes to the standard output.
+* `warn`, `error`, and `fatal` go to the standard error.  
+* Log messages are _unformatted_ when logged to a TTY
+* Log messages are formatted with timestampes, levels, etc, when logged to a file
 
-    $ methadone my_app
+This means that for command-line use, the user sees messages formatted for them, and not horrible Maven-style enterprise logging.  As soon as
+you use your app in `cron`, however, the logger senses the absence of a TTY and switches its format to this style, so that the log files *do*
+have that valuable information.
 
-This generates a gemified project, complete with a README, Rakefile, unit tests and an [aruba][aruba]-powered cucumber test, so
-you can TDD your app instantly.  Your `bin` file will be setup with Methadone's structure and you're off to the races.  It even
-comes with some add-ons to Aruba to let you test-drive your user interface.
+You have complete access to the logger via `logger` and `logger=`, so you can ultimatley do whatever you want.
 
-## Will there be more?
+`Methdone::CLILogging` is included in `Methdone::Main`, so, if you followed the structure above, you have access to the logger and these
+methods.
 
-Of course!  Methadone's still in a pre-release state right now, although it's being used in production.  The parts that are there
-are solid, completely tested and good to go.  I just want to add some more sugar before calling it V1.  Namely, I want to make it
-easy to write shell scripts in Ruby.  Something like `FileUtils` but better.
+## Is there be more?
+
+In addition to all of this, Methadone provides some [Cucumber][cucumber] step definitions, based on [Aruba][aruba] that allow you to
+test-drive your command-line app.  When you bootstrap your app using `methadone`, this will be set up for you.
+
+I'm planning a few more things before v1.0.0, so checkout the [roadmap][roadmap] for more info.
+
+And, don't forget the [buy the book][book]
 
 ----
 
 {% footnotes %}
-  {% fn never fear, if you don't like Methadone, it only takes up a few scant pages at the end. %}
+  {% fn Never fear, if you don't like Methadone, it only takes up a few scant pages at the end. %}
+  {% fn You can, of course, set <code>DEBUG</code> in the environment and a methadone-powered app <em>will</em> dump the stack on an exception. %}
+  {% fn Of course, you can continue to use <code>opts.banner=</code> to set your own if you like. %}
 {% endfootnotes %}
 
 [book]: http://www.awesomecommandlineapps.com
@@ -286,3 +354,5 @@ easy to write shell scripts in Ruby.  Something like `FileUtils` but better.
 [methadone]: https://github.com/davetron5000/methadone
 [gogaruco-talk]: http://confreaks.net/videos/638-gogaruco2011-test-drive-the-development-of-your-command-line-applications
 [aruba]: https://github.com/cucumber/aruba
+[cucumber]: https://github.com/cucumber/cucumber
+[roadmap]: https://github.com/davetron5000/methadone/wiki/Roadmap
