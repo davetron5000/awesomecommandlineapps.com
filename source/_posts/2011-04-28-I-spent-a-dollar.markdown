@@ -6,6 +6,8 @@ layout: post
 Co-worker sent out an email today, letting everyone know about a handy Mac app called [cdto][cdto].  You drag it to Finder and, if you
 click it, it will open a Terminal window where the current working directory is the folder you're viewing in Finder.  Pretty handy.
 
+<!-- more -->
+
 I click the link and get to a Google Code page, with a link to a zip.  Then, I thought, maybe the developer is being nice and has put
 it in the App Store; that way, I can install it here with one click, and install it at home with one click.
 

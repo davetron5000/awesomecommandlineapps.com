@@ -10,6 +10,7 @@ Yesterday, while waiting for guests to arrive at my mostly-annual New Year's Eve
 * deploy an App to the iPhone App Store
 * Deploy a Rails 2 app to Heroku
 
+<!-- more -->
 I had totally forgotten about this, although I accomplished almost everything on that list.  This year, I spoke at [DCRUG][dcrug] twice, [NOVAJUG][novajug] once, and [spoke at ScalaDays][scaladays] 2010 in Switzerland (and was subsequently trapped by that [stupid volcano][volcano]) as well as [Lone Star Ruby Conf][lsrc] in Austin.  While I still haven't quite submitted [my iPhone app][winebrain] to the app store, I *did* deploy a Rails _three_ app to heroku, namely my Rails Rumble '10 entry [Carl The Robot][carl].   On top of all that, I successfully completed [PragProWriMo][pragprowrimo], writing a 170+ page book on command-line applications in Ruby in just one month.  *And* had [more][patch1] [than][patch2] [a few][patch3] [patches][patch4] [accepted][patch5] [to some][patch6] [open source][scala] [projects][showoff].
 
 So, I created `2011_goals.txt` to continue the tradition:

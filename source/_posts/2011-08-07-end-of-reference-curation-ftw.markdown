@@ -5,6 +5,8 @@ layout: post
 
 Museums aren't the only things curated anymore - now, everything is!
 
+<!-- more -->
+
 If there were a "trending word" of the decade leading up to this one, it would be "curated".  Although I'd heard the word before its launch, the [iOS App Store][app_store] certainly brought it to the forefront of everyone interested in technology.  
 
 However, it's a concept that's been around forever.  I posted this picture on [Instagram][instagram] a few months ago titled "A study in

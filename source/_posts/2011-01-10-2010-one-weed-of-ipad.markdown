@@ -9,6 +9,8 @@ On Jan 3, I [tweeted][tweet]:
 
 Essentially, what I decided to try doing was to bring my iPad to work every day, and use it for Twitter, RSS, and personal emails.  The only "personal" stuff I would be doing on my work machine would be IM, simply because the IM experience on iPad is not very good, and the immediacy of it would be lost on a computer that's not right in front of me.  I don't do a lot of personal IM'ing anyway, so this seemed like a good compromise.
 
+<!-- more -->
+
 ## Why?
 
 Normally, I get all kinds of notifications on my machine: new emails, new stories in RSS, new tweets, etc.  This divides my focus.  I'll spend upwards of five minutes reading mail or blogs while waiting for a *two* minute test run to complete.  Not good.  It's hard enough to focus where I work as it is, so I thought this would help.  Further, when I *do* take a break and focus on RSS or personal email, I'm bombarded with work-related things&hellip;the very things I'm trying to take a break from!

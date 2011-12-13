@@ -11,6 +11,8 @@ You don't need schedule time to play video games
 really strikes a chord with me.  Not that I play video games (I don't), but the underyling message really speaks to me: “you don't need to schedule time to do
 things you *really* want to do.”
 
+<!-- more -->
+
 It's true; I don't have any problem finding time throughout the week to work on my book, or hack on [open source][gli] stuff, or have a
 great meal with my lovely [fiancé][amy].  What I *do* have a problem finding time for are the things I hate doing, but that I feel,
 intellecutally, that I *should* be doing.

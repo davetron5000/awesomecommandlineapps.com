@@ -9,6 +9,8 @@ Reading Wikipedia [summaries][flashpoint] of the [insanity][crisis] that is the 
 
 {% img right http://dcu.blog.dccomics.com/files/2011/07/Justice-League-12-150x150.jpg %}
 
+<!-- more -->
+
 Having zero desire to locate, much less visit, my local comics store, the awesome [Comixology](http://www.comixology.com/) app is
 my gateway to nerdom.  I've used it to read a few  short-run titles like Kick-Ass and Wanted, and they carry the DC titles.
 **And**, the New 52 titles are being released digitally at the same time as they are in print.  Awesome.  Nothing more annoying

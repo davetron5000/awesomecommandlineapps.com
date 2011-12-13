@@ -9,6 +9,8 @@ One of the assertions I added to the talk, based on my work on the book is the s
 
 My answer was about as eloquent as a middle-school debate team closing argument and amounted to “Me hate bash.”
 
+<!-- more -->
+
 Although I *do* dislike shell programming, it's not exactly fair of me to transfer my personal preferences into solid “advice,” nor is it fair to imply that shell programming is a lame or worthless skill; it's certainly not.
 
 So, I thought about it a bit more and I have a *real* answer to the question “Why use Ruby instead of shell?”

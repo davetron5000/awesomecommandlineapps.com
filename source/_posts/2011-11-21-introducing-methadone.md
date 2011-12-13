@@ -22,6 +22,8 @@ main, way less compact).
 Enter [methadone][methadone], which I developed while working on the book and developing my [talk][gogaruco-talk] for Golden Gate
 Ruby Conf 2011.
 
+<!-- more -->
+
 ## Another command-line option parser?
 
 Yes and no.  Methadone isn't a re-implementation of command-line option parsing.  It's barely a DSL, making use of almost no
