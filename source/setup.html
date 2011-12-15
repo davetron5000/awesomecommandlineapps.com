@@ -1,0 +1,187 @@
+---
+layout: default
+---
+<div class="setup-page">
+  <h3>Setting up Your Machine</h3>
+  <p>I'd meant to include this with the book, but I couldn't get things working right on
+  Windows.  If <em>you've</em> been able to, please <a href="http://forums.pragprog.com/forums/200">post about</a>
+  and I'll try to replicate and include the instructions here.
+  For those of you on Mac OS or Linux, read on!
+  </p>
+  <h4>MacOS &amp; Linux</h4>
+    <p>
+      It's likely that your system came installed with a version of Ruby.  It's also likely that it came
+      with a very <em>old</em> version of Ruby.  For example, Mac OS X Lion, the latest operating system
+      produced by Apple at the time of this writing, ships with a version of Ruby 1.8.7, built in
+      January of 2010.
+    </p>
+    <p>
+      While we could install a more recent version, there's usually a good reason why operating system vendors install specific versions, and updating the system's version of Ruby could cause unforseen problems.  Fortunately, the 
+      Ruby Version Manager (RVM for short) is a tool that can fix this.  RVM will allow us to setup a completely isolated
+      Ruby environment, outside of the system's Ruby, with complete control over the gems we install.  In fact, we
+      can set up completely different sets of gems, and switch between them.
+    </p>
+    <p>
+      We'll walk you through installing RVM, and creating a gemset for the purposes of running some example code that will verify that your environment is working.  These will be very explicit instructions, but you should check
+      <a href="http://beginrescueend.com/rvm/install/">the RVM website</a> for the latest RVM installation instructions and documentation.
+    </p>
+      <h5>Installing General Development Tools</h5>
+      <p>
+        Before setting up RVM, you'll need to make sure you have appropriate developer tools installed.  It's likely you
+        have these installed already, especially if you are using Linux.  You can do a quick check via:
+      </p>
+      {% codeblock Find out if GCC is installed lang:bash %}
+$ type gcc
+gcc is /usr/bin/gcc {% endcodeblock %}
+      <p>
+        It doesn't matter where <code>gcc</code> (the open-source Gnu C Compiler) is installed, just so long as it is.  If it's not, and you are running Linux, consult your distribution's instructions for installing development tools.  If
+        you are running Mac OS X, you'll need to install XCode, which should've been included with your computer, but is also available as a free download from the Mac App Store.
+      </p>
+      <h5>Installing RVM</h5>
+      <p>
+        Now that you have development tools installed, we need
+        to install RVM, which is done by executing a remote <code>bash</code>
+        script.  
+      </p>
+      {% codeblock Installing RVM lang:bash %}
+$ bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer){% endcodeblock %}
+      <p>
+        If you are concerned about blindly executing code from the Internet, you can examine the installation script via
+      </p>
+      {% codeblock Examining the RVM install script lang:bash %}
+$ curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer | less{% endcodeblock %}
+      <p>
+        When RVM installs, it will generate a large amount of output.  At the very end will be some instructions for
+        configuring RVM in your environment.  It should be a command like so:
+      </p>
+      {% codeblock Configuring your <code>.bashrc</code> for RVM lang:bash %}
+$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile {% endcodeblock %}
+      <p>
+        This concatenates some code into your <code>.bash_profile</code>.  If you aren't using <code>bash</code>
+        as your prompt, or don't configure it in <code>.bash_profile</code>, you'll need to replace the
+        <code>>> ~/.bash_profile</code> with the correct file name.
+      </p>
+      <p>
+        Once you've done this, you need to reload your environment.  It's simplest to exit your current shell and open up a new one.  You can check that things are working via:
+      </p>
+      {% codeblock Verifying that RVM was installed lang:bash %}
+$ type rvm | head -1
+rvm is a function {% endcodeblock %}
+      <p>
+        If you do <em>not</em> see the output above, something's gone wrong and you'll need to retrace your steps.  RVM's
+        installation instructions will help, and there is additional information on the website for troubleshooting.
+        Next, you'll need to install a version of Ruby. 
+      </p>
+      <h5>Installing Ruby</h5>
+      <p>
+        Now that RVM is installed, we can use it to install any version of Ruby in a way that will not affect our
+        system's Ruby install.  At the time of this writing the latest version of Ruby is 1.9.3, so let's use that:
+      </p>
+      {% codeblock Installing Ruby 1.9.3 lang:bash %}
+$ rvm install 1.9.3
+Installing Ruby from source to: /Users/davec/.rvm/rubies/ruby-1.9.3-p0, this may take a while depending on your cpu(s)...
+
+ruby-1.9.3-p0 - #fetching 
+ruby-1.9.3-p0 - #extracted to /Users/davec/.rvm/src/ruby-1.9.3-p0 (already extracted)
+Fetching yaml-0.1.4.tar.gz to /Users/davec/.rvm/archives
+Extracting yaml-0.1.4.tar.gz to /Users/davec/.rvm/src
+Configuring yaml in /Users/davec/.rvm/src/yaml-0.1.4.
+Compiling yaml in /Users/davec/.rvm/src/yaml-0.1.4.
+Installing yaml to /Users/davec/.rvm/usr
+ruby-1.9.3-p0 - #configuring 
+ruby-1.9.3-p0 - #compiling 
+ruby-1.9.3-p0 - #installing 
+Removing old Rubygems files...
+Installing rubygems-1.8.10 for ruby-1.9.3-p0 ...
+Installation of rubygems completed successfully.
+ruby-1.9.3-p0 - adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+ruby-1.9.3-p0 - #importing default gemsets (/Users/davec/.rvm/gemsets/)
+Install of ruby-1.9.3-p0 - #complete {% endcodeblock %}
+      <p>
+        The output might not exactly match, but you should see something along these lines.  It may take a while, since it
+        first downloads the source code for Ruby 1.9.3, and then builds it (this is why we needed a C compiler installed
+        in the first step).  To check that things are working:
+      </p>
+      {% codeblock Using Ruby 1.9.2 lang:bash %}
+$ rvm use 1.9.3
+$ ruby --version
+ruby 1.9.3p0 (2011-10-30 revision 33570) [x86_64-darwin11.2.0] {% endcodeblock %}
+      <p>
+        Again, the string might not match exactly, but you should see “1.9.3” in the version string.
+        We're almost ready.  The last thing we need to do is learn about using Gemsets.  Since we are using
+        several open-source gems throughout the book, it's handy to be able to install them in a 
+        “sandbox” that allows us to play around with them, but without installing them in our main, global
+        set of gems.
+      </p>
+      <p>
+        <firstuse>Gemsets</firstuse> allow us to do that.  To show an example, do the following:
+      </p>
+      {% codeblock Creating and Using a Gemset lang:bash %}
+$ rvm use 1.9.3
+$ gem list
+*** LOCAL GEMS ***
+
+rake (0.8.7 ruby)
+$ rvm gemset create testing
+'testing' gemset created (/Users/davec/.rvm/gems/ruby-1.9.3-p0@testing).
+$ rvm gemset use testing
+$ gem install gli
+Fetching: gli-1.3.6.gem (100%)
+Successfully installed gli-1.3.6
+1 gem installed
+Installing ri documentation for gli-1.3.6...
+Installing RDoc documentation for gli-1.3.6...
+$ gem list
+*** LOCAL GEMS ***
+
+gli (1.3.6)
+rake (0.8.7)
+$ gli help
+gli allows you to create the scaffolding for a GLI-powered application
+
+usage: gli [global options] command [command options]
+
+Version: 1.3.6
+
+Global Options:
+    -n             - Dry run; dont change the disk
+    -r, --root=arg - Root dir of project (default: .)
+    -v             - Be verbose
+
+Commands:
+    help           - Shows list of commands or help for one command
+    init, scaffold - Create a new GLI-based project
+$ rvm gemset create testing2
+'testing2' gemset created (/Users/davec/.rvm/gems/ruby-1.9.3-p0@testing2).
+$ rvm gemset use testing2
+$ gem list
+
+*** LOCAL GEMS ***
+
+rake (0.8.7)
+$ gli help
+-bash: gli: command not found {% endcodeblock %}
+      <p>
+        As you can see, we created two gemsets, named <code>testing</code> and <code>testing2</code> and used <code>rvm gemset use</code> to switch between them.  In doing so, <code>gem</code> only sees the gems listed in the current gemset.  Further, we can see that by installing <code>gli</code> in one gemset and not the other, RVM also manipulates our <code>PATH</code> so that the <code>gli</code> executable is available only in the gemset where <code>gli</code> is installed.
+      </p>
+      <p>
+        I would recommend that you use a gemset for following along with the examples in the book.  By doing this, if you get into a weird situation where your environment isn't working, you can clear out your gemset with <code>rvm gemset delete</code> and start fresh.
+      </p>
+      <h4>Windows</h4>
+      <p>
+      As mentioned, I was unable to get a good Windows install working.  At the very least you will need to use the
+      <a href="http://rubyinstaller.org/">Ruby Installer</a> to get Ruby on your system.
+      </p>
+      <p>
+      The specific troubles I had were around installing native gems using the <a href="http://rubyinstaller.org/add-ons/devkit/">DevKit</a>.  If you can get everything installed on a Windows 7 box, and execute the examples, 
+      <a href="http://forums.pragprog.com/forums/200">please share it</a>.  Note that, at this time, Aruba doesn't
+      work with Windows, however everything else should.
+      </p>
+</div>
+<aside class="sidebar">
+  {% if site.blog_index_asides.size %}
+    {% include_array blog_index_asides %}
+  {% else %}
+    {% include_array default_asides %}
+  {% endif %}
+</aside>

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div class="main-page">
+  <ol id="toc">
+    <li><span class="title">Have a Clear and Concise Purpose</span><span class="description">what makes a <em>good command-line app</em></span></li>
+    <li><span class="title">Be Easy To Use (<a href="http://media.pragprog.com/titles/dccar/understand.pdf">excerpt</a>)</span><span class="description">learn the parts of the command-line and <em>how to accept options</em> </span></li>
+    <li><span class="title">Be Helpful</span><span class="description">easily and simply create <em>amazing online help</em> for your apps</span></li>
+    <li><span class="title">Play Well with Others (<a href="http://media.pragprog.com/titles/dccar/standard.pdf">excerpt</a>)</span><span class="description">the "UNIX Way" makes your apps <em>extensible and interoperable</em> </span></li>
+    <li><span class="title">Design for an Awesome User Experience (<a href="http://media.pragprog.com/titles/dccar/names.pdf">excerpt</a>)</span><span class="description"><em>delight users</em> with sensible defaults </span></li>
+    <li><span class="title">Make Configuration Easy</span><span class="description">make <em>expert users happy</em> by being configurable</span></li>
+    <li><span class="title">Distribute Painlessly</span><span class="description">get your apps <em>installed anywhere</em></span></li>
+    <li><span class="title">Test, test, test</span><span class="description">design and build a robust app that <em>doesn't break</em></span></li>
+    <li><span class="title">Be Easy To Maintain</span><span class="description">make <em>developing</em> for your app a <em>joy</em></span></li>
+    <li><span class="title">Add Color, Formatting, and Interactivity</span><span class="description">break the rules to create a <em>fun and engaging</em> experience</span></li>
+  </ol>
+  <ol id="appendix">
+    <li><span class="title">Common Command-Line Gems and Libraries</span><span class="description">Learn about Thor, main, methadone, trollop and <em>more</em></span></li>
+  </ol>
+</div>
+<aside class="sidebar">
+  {% if site.blog_index_asides.size %}
+    {% include_array blog_index_asides %}
+  {% else %}
+    {% include_array default_asides %}
+  {% endif %}
+</aside>

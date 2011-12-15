@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Build Awesome Command-Line Applications in Ruby</title>
+  <meta name="author" content="David Bryant Copeland">
+
+  
+  <meta name="description" content="Setting up Your Machine I&#8217;d meant to include this with the book, but I couldn&#8217;t get things working right on Windows. If you&#8217;ve &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.awesomecommandlinesapps.com/setup.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="" rel="alternate" title="Build Awesome Command-Line Applications in Ruby" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Build Awesome Command-Line Applications in Ruby</a></h1>
+  
+    <h2>Control Your Computer, Simplify Your Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!--
+<ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+-->
+  
+<ul class="main-navigation">
+  <li><a href="http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby">Buy Now!</a></li>
+  <li><a href="/toc.html">Table of Contents</a></li>
+  <li><a href="/video.html">Talks &amp; Media</a></li>
+  <li><a href="http://forums.pragprog.com/forums/200">Discuss</a></li>
+  <li><a href="/setup.html">Setup</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="setup-page">
+  <h3>Setting up Your Machine</h3>
+  <p>I&#8217;d meant to include this with the book, but I couldn&#8217;t get things working right on
+  Windows.  If <em>you&#8217;ve</em> been able to, please <a href="http://forums.pragprog.com/forums/200">post about</a>
+  and I&#8217;ll try to replicate and include the instructions here.
+  For those of you on Mac OS or Linux, read on!
+  </p>
+  <h4>MacOS &amp; Linux</h4>
+    <p>
+      It&#8217;s likely that your system came installed with a version of Ruby.  It&#8217;s also likely that it came
+      with a very <em>old</em> version of Ruby.  For example, Mac OS X Lion, the latest operating system
+      produced by Apple at the time of this writing, ships with a version of Ruby 1.8.7, built in
+      January of 2010.
+    </p>
+    <p>
+      While we could install a more recent version, there&#8217;s usually a good reason why operating system vendors install specific versions, and updating the system&#8217;s version of Ruby could cause unforseen problems.  Fortunately, the 
+      Ruby Version Manager (RVM for short) is a tool that can fix this.  RVM will allow us to setup a completely isolated
+      Ruby environment, outside of the system&#8217;s Ruby, with complete control over the gems we install.  In fact, we
+      can set up completely different sets of gems, and switch between them.
+    </p>
+    <p>
+      We&#8217;ll walk you through installing RVM, and creating a gemset for the purposes of running some example code that will verify that your environment is working.  These will be very explicit instructions, but you should check
+      <a href="http://beginrescueend.com/rvm/install/">the RVM website</a> for the latest RVM installation instructions and documentation.
+    </p>
+      <h5>Installing General Development Tools</h5>
+      <p>
+        Before setting up RVM, you&#8217;ll need to make sure you have appropriate developer tools installed.  It&#8217;s likely you
+        have these installed already, especially if you are using Linux.  You can do a quick check via:
+      </p>
+      <figure class='code'><figcaption><span>Find out if GCC is installed  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">type </span>gcc
+</span><span class='line'>gcc is /usr/bin/gcc
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        It doesn&#8217;t matter where <code>gcc</code> (the open-source Gnu C Compiler) is installed, just so long as it is.  If it&#8217;s not, and you are running Linux, consult your distribution&#8217;s instructions for installing development tools.  If
+        you are running Mac OS X, you&#8217;ll need to install XCode, which should&#8217;ve been included with your computer, but is also available as a free download from the Mac App Store.
+      </p>
+      <h5>Installing RVM</h5>
+      <p>
+        Now that you have development tools installed, we need
+        to install RVM, which is done by executing a remote <code>bash</code>
+        script.  
+      </p>
+      <figure class='code'><figcaption><span>Installing RVM  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bash &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        If you are concerned about blindly executing code from the Internet, you can examine the installation script via
+      </p>
+      <figure class='code'><figcaption><span>Examining the RVM install script  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer | less
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        When RVM installs, it will generate a large amount of output.  At the very end will be some instructions for
+        configuring RVM in your environment.  It should be a command like so:
+      </p>
+      <figure class='code'><figcaption><span>Configuring your <code>.bashrc</code> for RVM  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        This concatenates some code into your <code>.bash_profile</code>.  If you aren&#8217;t using <code>bash</code>
+        as your prompt, or don&#8217;t configure it in <code>.bash_profile</code>, you&#8217;ll need to replace the
+        <code>>> ~/.bash_profile</code> with the correct file name.
+      </p>
+      <p>
+        Once you&#8217;ve done this, you need to reload your environment.  It&#8217;s simplest to exit your current shell and open up a new one.  You can check that things are working via:
+      </p>
+      <figure class='code'><figcaption><span>Verifying that RVM was installed  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">type </span>rvm | head -1
+</span><span class='line'>rvm is a <span class="k">function</span>
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        If you do <em>not</em> see the output above, something&#8217;s gone wrong and you&#8217;ll need to retrace your steps.  RVM&#8217;s
+        installation instructions will help, and there is additional information on the website for troubleshooting.
+        Next, you&#8217;ll need to install a version of Ruby. 
+      </p>
+      <h5>Installing Ruby</h5>
+      <p>
+        Now that RVM is installed, we can use it to install any version of Ruby in a way that will not affect our
+        system&#8217;s Ruby install.  At the time of this writing the latest version of Ruby is 1.9.3, so let&#8217;s use that:
+      </p>
+      <figure class='code'><figcaption><span>Installing Ruby 1.9.3  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm install 1.9.3
+</span><span class='line'>Installing Ruby from <span class="nb">source </span>to: /Users/davec/.rvm/rubies/ruby-1.9.3-p0, this may take a <span class="k">while </span>depending on your cpu<span class="o">(</span>s<span class="o">)</span>...
+</span><span class='line'>
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#fetching </span>
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#extracted to /Users/davec/.rvm/src/ruby-1.9.3-p0 (already extracted)</span>
+</span><span class='line'>Fetching yaml-0.1.4.tar.gz to /Users/davec/.rvm/archives
+</span><span class='line'>Extracting yaml-0.1.4.tar.gz to /Users/davec/.rvm/src
+</span><span class='line'>Configuring yaml in /Users/davec/.rvm/src/yaml-0.1.4.
+</span><span class='line'>Compiling yaml in /Users/davec/.rvm/src/yaml-0.1.4.
+</span><span class='line'>Installing yaml to /Users/davec/.rvm/usr
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#configuring </span>
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#compiling </span>
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#installing </span>
+</span><span class='line'>Removing old Rubygems files...
+</span><span class='line'>Installing rubygems-1.8.10 <span class="k">for </span>ruby-1.9.3-p0 ...
+</span><span class='line'>Installation of rubygems completed successfully.
+</span><span class='line'>ruby-1.9.3-p0 - adjusting <span class="c">#shebangs for (gem irb erb ri rdoc testrb rake).</span>
+</span><span class='line'>ruby-1.9.3-p0 - <span class="c">#importing default gemsets (/Users/davec/.rvm/gemsets/)</span>
+</span><span class='line'>Install of ruby-1.9.3-p0 - <span class="c">#complete </span>
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        The output might not exactly match, but you should see something along these lines.  It may take a while, since it
+        first downloads the source code for Ruby 1.9.3, and then builds it (this is why we needed a C compiler installed
+        in the first step).  To check that things are working:
+      </p>
+      <figure class='code'><figcaption><span>Using Ruby 1.9.2  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm use 1.9.3
+</span><span class='line'><span class="nv">$ </span>ruby --version
+</span><span class='line'>ruby 1.9.3p0 <span class="o">(</span>2011-10-30 revision 33570<span class="o">)</span> <span class="o">[</span>x86_64-darwin11.2.0<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        Again, the string might not match exactly, but you should see “1.9.3” in the version string.
+        We&#8217;re almost ready.  The last thing we need to do is learn about using Gemsets.  Since we are using
+        several open-source gems throughout the book, it&#8217;s handy to be able to install them in a 
+        “sandbox” that allows us to play around with them, but without installing them in our main, global
+        set of gems.
+      </p>
+      <p>
+        <firstuse>Gemsets</firstuse> allow us to do that.  To show an example, do the following:
+      </p>
+      <figure class='code'><figcaption><span>Creating and Using a Gemset  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm use 1.9.3
+</span><span class='line'><span class="nv">$ </span>gem list
+</span><span class='line'>*** LOCAL GEMS ***
+</span><span class='line'>
+</span><span class='line'>rake <span class="o">(</span>0.8.7 ruby<span class="o">)</span>
+</span><span class='line'><span class="nv">$ </span>rvm gemset create testing
+</span><span class='line'><span class="s1">&#39;testing&#39;</span> gemset created <span class="o">(</span>/Users/davec/.rvm/gems/ruby-1.9.3-p0@testing<span class="o">)</span>.
+</span><span class='line'><span class="nv">$ </span>rvm gemset use testing
+</span><span class='line'><span class="nv">$ </span>gem install gli
+</span><span class='line'>Fetching: gli-1.3.6.gem <span class="o">(</span>100%<span class="o">)</span>
+</span><span class='line'>Successfully installed gli-1.3.6
+</span><span class='line'>1 gem installed
+</span><span class='line'>Installing ri documentation <span class="k">for </span>gli-1.3.6...
+</span><span class='line'>Installing RDoc documentation <span class="k">for </span>gli-1.3.6...
+</span><span class='line'><span class="nv">$ </span>gem list
+</span><span class='line'>*** LOCAL GEMS ***
+</span><span class='line'>
+</span><span class='line'>gli <span class="o">(</span>1.3.6<span class="o">)</span>
+</span><span class='line'>rake <span class="o">(</span>0.8.7<span class="o">)</span>
+</span><span class='line'><span class="nv">$ </span>gli <span class="nb">help</span>
+</span><span class='line'>gli allows you to create the scaffolding <span class="k">for </span>a GLI-powered application
+</span><span class='line'>
+</span><span class='line'>usage: gli <span class="o">[</span>global options<span class="o">]</span> <span class="nb">command</span> <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>Version: 1.3.6
+</span><span class='line'>
+</span><span class='line'>Global Options:
+</span><span class='line'>    -n             - Dry run; dont change the disk
+</span><span class='line'>    -r, --root<span class="o">=</span>arg - Root dir of project <span class="o">(</span>default: .<span class="o">)</span>
+</span><span class='line'>    -v             - Be verbose
+</span><span class='line'>
+</span><span class='line'>Commands:
+</span><span class='line'>    <span class="nb">help</span>           - Shows list of commands or <span class="nb">help </span><span class="k">for </span>one <span class="nb">command</span>
+</span><span class='line'><span class="nb">    </span>init, scaffold - Create a new GLI-based project
+</span><span class='line'><span class="nv">$ </span>rvm gemset create testing2
+</span><span class='line'><span class="s1">&#39;testing2&#39;</span> gemset created <span class="o">(</span>/Users/davec/.rvm/gems/ruby-1.9.3-p0@testing2<span class="o">)</span>.
+</span><span class='line'><span class="nv">$ </span>rvm gemset use testing2
+</span><span class='line'><span class="nv">$ </span>gem list
+</span><span class='line'>
+</span><span class='line'>*** LOCAL GEMS ***
+</span><span class='line'>
+</span><span class='line'>rake <span class="o">(</span>0.8.7<span class="o">)</span>
+</span><span class='line'><span class="nv">$ </span>gli <span class="nb">help</span>
+</span><span class='line'>-bash: gli: <span class="nb">command </span>not found
+</span></code></pre></td></tr></table></div></figure>
+      <p>
+        As you can see, we created two gemsets, named <code>testing</code> and <code>testing2</code> and used <code>rvm gemset use</code> to switch between them.  In doing so, <code>gem</code> only sees the gems listed in the current gemset.  Further, we can see that by installing <code>gli</code> in one gemset and not the other, RVM also manipulates our <code>PATH</code> so that the <code>gli</code> executable is available only in the gemset where <code>gli</code> is installed.
+      </p>
+      <p>
+        I would recommend that you use a gemset for following along with the examples in the book.  By doing this, if you get into a weird situation where your environment isn&#8217;t working, you can clear out your gemset with <code>rvm gemset delete</code> and start fresh.
+      </p>
+      <h4>Windows</h4>
+      <p>
+      As mentioned, I was unable to get a good Windows install working.  At the very least you will need to use the
+      <a href="http://rubyinstaller.org/">Ruby Installer</a> to get Ruby on your system.
+      </p>
+      <p>
+      The specific troubles I had were around installing native gems using the <a href="http://rubyinstaller.org/add-ons/devkit/">DevKit</a>.  If you can get everything installed on a Windows 7 box, and execute the examples, 
+      <a href="http://forums.pragprog.com/forums/200">please share it</a>.  Note that, at this time, Aruba doesn&#8217;t
+      work with Windows, however everything else should.
+      </p>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <p>
+  <a href="http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby"><img class="center" src="http://imagery.pragprog.com/products/249/dccar_xlargebeta.jpg?1319573406"></a>
+  </p>
+</section>
+<section>
+  <h1>About Dave</h1>
+  <p>
+  <img class="left" src="http://www.gravatar.com/avatar/ae52d95bbc43d0a62044a9a6b5674de0.png">
+  I&#8217;m a veteran professional software developer who spends most of my time on the command line. I speak frequently at national and regional conferences and spend my days as a developer for LivingSocial in Washington, DC.
+  I&#8217;ve written applications in C, C++, Perl, Ruby, Scala, and many others, always using the command line in some form or other.
+  As a developer, I believe in clean code, doing it right, providing a great user experience and using the right tool for the job.
+  </p>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("davetron5000", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/davetron5000" class="twitter-follow-button" data-show-count="false">Follow @davetron5000</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 - David Bryant Copeland -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,8 +1,79 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
-@import "footnote";
+.main-page, .setup-page {
+  p {
+    margin-bottom: 0px;
+  }
+  p, ul, ol, h3, h4, h5, figure {
+    padding-left: $pad-min;
+    padding-right: $pad-min;
+    padding-bottom: $pad-min;
+  }
+  h3, h4, h5 {
+    margin-bottom: .2em;
+  }
+  ol#toc {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 
-ul, ol {
-  list-style-position: inside;
+    li {
+      margin-bottom: .3em;
+      em {
+        @extend .mono;
+        display: inline-block;
+        white-space: no-wrap;
+        background: #fff;
+        font-size: .8em;
+        line-height: 1.5em;
+        color: black;
+        border: 1px solid #ddd;
+        @include border-radius(.4em);
+        padding: .3em .3em;
+        margin: -1px 0;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 80%;
+      }
+    }
+  }
+
+  ol#appendix {
+    list-style-type:upper-alpha;
+  }
+
+  ol#toc, ol#appendix {
+    .title {
+      font-weight: bold;
+      font-size: 130%;
+      display: block;
+    }
+    .description {
+      margin-left: 1em;
+    }
+  }
+  dl.videos {
+    a {
+      text-decoration: none;
+      color: $solar-blue;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    padding-left: 2em;
+    dt {
+      h3 {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+      }
+      padding-bottom: 1em;
+    }
+    dd {
+      margin-left: 1em;
+      img {
+        @include border-radius(.5em);
+      }
+      margin-bottom: 2em;
+    }
+  }
 }

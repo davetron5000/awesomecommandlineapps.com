@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="main-page">
+  <dl class="videos">
+    <dt><h3>Make Awesome Command-Line Applications in Ruby</h3>
+    <h4>from <a href="http://www.rubynation.org/">RubyNation 2010</a></h4>
+    </dt>
+    <dd><a href="http://blip.tv/rubynation/david-copeland-make-awesome-command-line-applications-in-ruby-5562265">
+      {% img /images/rubynation_talk.png 400 'Make Awesome Command-Line Applications in Ruby' %}</a>
+      </dd>
+      <dt><h3>Test-Drive the Development of Your Command-Line Applications</h3>
+      <h4>from <a href="http://rubyconf.org/">RubyConf 2011</a></h4>
+      </dt>
+    <dd><a href="http://confreaks.net/videos/694-rubyconf2011-test-drive-the-development-of-your-command-line-applications">
+      {% img http://confreaks.net/system/videos/images/694/preview/694-rubyconf2011-test-drive-the-development-of-your-command-line-applications-thumb_0001.png?1319751585 400 'Test-Drive the Development of Your Command-Line Applications' %}</a>
+      </dd>
+      <dt>
+      <h3><a href="http://rubyrogues.com/028-beyond-the-web/">Beyond The Web</a> - <a href="http://www.rubyrogues.com">Ruby Rogues Podcast</a></h3>
+      <h4>from <a href="http://www.rubymidwest.com/">Ruby Midwest 2011</a></h4>
+      </dt>
+      <dd>
+      </dd>
+  </dl>
+</div>
+<aside class="sidebar">
+  {% if site.blog_index_asides.size %}
+    {% include_array blog_index_asides %}
+  {% else %}
+    {% include_array default_asides %}
+  {% endif %}
+</aside>
