@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby Gems for Command-Line Apps - Build Awesome Command-Line Applications in Ruby</title>
+  <meta name="author" content="David Bryant Copeland">
+
+  
+  <meta name="description" content="Ruby Gems for Command-Line Apps Mar 26th, 2012 One of the toughest things about writing command-line apps in Ruby is finding the right gems. There&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.awesomecommandlinesapps.com/gems.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="" rel="alternate" title="Build Awesome Command-Line Applications in Ruby" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Build Awesome Command-Line Applications in Ruby</a></h1>
+  
+    <h2>Control Your Computer, Simplify Your Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!--
+<ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+-->
+  
+<ul class="main-navigation">
+  <li><a href="http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby">Buy Now!</a></li>
+  <li><a href="/reviews.html">What They're Saying</a></li>
+  <li><a href="/index.html">Table of Contents</a></li>
+  <li><a href="/video.html">Talks &amp; Media</a></li>
+  <li><a href="http://forums.pragprog.com/forums/200">Discuss</a></li>
+  <li><a href="/gems.html">Command-Line Gems</a></li>
+  <li><a href="/setup.html">Setup</a></li>
+  <li><a href="/overview.html">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Ruby Gems for Command-Line Apps</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T21:15:00-04:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time></p>
+  </header>
+  
+  <p>One of the toughest things about writing command-line apps in Ruby is finding the right gems.  There&#8217;s tons out there, but they
+can be really hard to find, either due to names that are too generic (main) or too bizzare (trollop).  Searching on RubyGems and
+Github is OK, but not great.  While speaking at conferences and writing the book, I came across a ton of wonderful
+gems for writing command-line apps.  This page is an attempt to catalog them all.</p>
+
+<hr />
+
+<h3>By Category</h3>
+
+<p><a href='#tag-colored_output'>Colored Output</a> | <a href='#tag-command_suite'>Command Suite</a> | <a href='#tag-documentation'>Documentation</a> | <a href='#tag-framework'>Framework</a> | <a href='#tag-inbook'>Inbook</a> | <a href='#tag-parsing'>Parsing</a> | <a href='#tag-progressbar'>Progressbar</a> | <a href='#tag-recommended'>Recommended</a> | <a href='#tag-simple'>Simple</a> | <a href='#tag-subprocess'>Subprocess</a> | <a href='#tag-table'>Table</a> | <a href='#tag-testing'>Testing</a> | <a href='#tag-ui'>UI</a> | <a href='#tag-user_io'>User I/O</a> | <a href='#tag-validation'>Validation</a></p>
+
+<p><a name='tag-colored_output'></a></p>
+
+<h4>Colored Output</h4>
+
+<ul>
+<li><a href='#gem-paint'>Paint</a></li>
+<li><a href='#gem-termansicolor'>Term-ansicolor</a></li>
+<li><a href='#gem-rainbow'>Rainbow</a></li>
+</ul>
+
+
+<p><a name='tag-command_suite'></a></p>
+
+<h4>Command Suite</h4>
+
+<ul>
+<li><a href='#gem-thor'>Thor</a></li>
+<li><a href='#gem-main'>Main</a></li>
+<li><a href='#gem-gli'>GLI</a></li>
+<li><a href='#gem-commander'>Commander</a></li>
+<li><a href='#gem-cri'>CRI</a></li>
+<li><a href='#gem-optitron'>Optitron</a></li>
+</ul>
+
+
+<p><a name='tag-documentation'></a></p>
+
+<h4>Documentation</h4>
+
+<ul>
+<li><a href='#gem-gemman'>Gem-man</a></li>
+<li><a href='#gem-ronn'>Ronn</a></li>
+</ul>
+
+
+<p><a name='tag-framework'></a></p>
+
+<h4>Framework</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-thor'>Thor</a></li>
+<li><a href='#gem-gli'>GLI</a></li>
+</ul>
+
+
+<p><a name='tag-inbook'></a></p>
+
+<h4>Inbook</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-thor'>Thor</a></li>
+<li><a href='#gem-trollop'>Trollop</a></li>
+<li><a href='#gem-main'>Main</a></li>
+<li><a href='#gem-gli'>GLI</a></li>
+<li><a href='#gem-rainbow'>Rainbow</a></li>
+<li><a href='#gem-terminaltable'>Terminal-Table</a></li>
+<li><a href='#gem-gemman'>Gem-man</a></li>
+<li><a href='#gem-ronn'>Ronn</a></li>
+</ul>
+
+
+<p><a name='tag-parsing'></a></p>
+
+<h4>Parsing</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-thor'>Thor</a></li>
+<li><a href='#gem-trollop'>Trollop</a></li>
+<li><a href='#gem-main'>Main</a></li>
+<li><a href='#gem-gli'>GLI</a></li>
+<li><a href='#gem-choice'>Choice</a></li>
+<li><a href='#gem-commander'>Commander</a></li>
+<li><a href='#gem-cri'>CRI</a></li>
+<li><a href='#gem-mixlib'>Mixlib-CLI</a></li>
+<li><a href='#gem-optitron'>Optitron</a></li>
+<li><a href='#gem-slop'>Slop</a></li>
+</ul>
+
+
+<p><a name='tag-progressbar'></a></p>
+
+<h4>Progressbar</h4>
+
+<ul>
+<li><a href='#gem-formatador'>Formatador</a></li>
+<li><a href='#gem-progress_bar'>ProgressBar</a></li>
+</ul>
+
+
+<p><a name='tag-recommended'></a></p>
+
+<h4>Recommended</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-main'>Main</a></li>
+<li><a href='#gem-gli'>GLI</a></li>
+<li><a href='#gem-rainbow'>Rainbow</a></li>
+<li><a href='#gem-commandlinereporter'>Command_line_reporter</a></li>
+<li><a href='#gem-gemman'>Gem-man</a></li>
+<li><a href='#gem-ronn'>Ronn</a></li>
+</ul>
+
+
+<p><a name='tag-simple'></a></p>
+
+<h4>Simple</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-thor'>Thor</a></li>
+<li><a href='#gem-trollop'>Trollop</a></li>
+<li><a href='#gem-main'>Main</a></li>
+<li><a href='#gem-choice'>Choice</a></li>
+<li><a href='#gem-cri'>CRI</a></li>
+<li><a href='#gem-mixlib'>Mixlib-CLI</a></li>
+<li><a href='#gem-slop'>Slop</a></li>
+</ul>
+
+
+<p><a name='tag-subprocess'></a></p>
+
+<h4>Subprocess</h4>
+
+<ul>
+<li><a href='#gem-methadone'>Methadone</a></li>
+<li><a href='#gem-childprocess'>Childprocess</a></li>
+<li><a href='#gem-open4'>Open4</a></li>
+</ul>
+
+
+<p><a name='tag-table'></a></p>
+
+<h4>Table</h4>
+
+<ul>
+<li><a href='#gem-formatador'>Formatador</a></li>
+<li><a href='#gem-terminaltable'>Terminal-Table</a></li>
+<li><a href='#gem-commandlinereporter'>Command_line_reporter</a></li>
+</ul>
+
+
+<p><a name='tag-testing'></a></p>
+
+<h4>Testing</h4>
+
+<ul>
+<li><a href='#gem-construct'>Construct</a></li>
+<li><a href='#gem-fakefs'>FakeFS</a></li>
+<li><a href='#gem-aruba'>Aruba</a></li>
+</ul>
+
+
+<p><a name='tag-ui'></a></p>
+
+<h4>UI</h4>
+
+<ul>
+<li><a href='#gem-formatador'>Formatador</a></li>
+<li><a href='#gem-highline'>Highline</a></li>
+<li><a href='#gem-paint'>Paint</a></li>
+<li><a href='#gem-progress_bar'>ProgressBar</a></li>
+<li><a href='#gem-termansicolor'>Term-ansicolor</a></li>
+<li><a href='#gem-rainbow'>Rainbow</a></li>
+<li><a href='#gem-terminaltable'>Terminal-Table</a></li>
+<li><a href='#gem-commandlinereporter'>Command_line_reporter</a></li>
+</ul>
+
+
+<p><a name='tag-user_io'></a></p>
+
+<h4>User I/O</h4>
+
+<ul>
+<li><a href='#gem-highline'>Highline</a></li>
+</ul>
+
+
+<p><a name='tag-validation'></a></p>
+
+<h4>Validation</h4>
+
+<ul>
+<li><a href='#gem-highline'>Highline</a></li>
+</ul>
+
+
+<p><a name='alpha'></a></p>
+
+<h3>By Name</h3>
+
+<ul>
+<a name='gem-aruba'></a>
+<li><strong><a href='https://github.com/cucumber/aruba'>Aruba</a></strong> - Test your command-line app with Cucumber</li>
+<a name='gem-cri'></a>
+<li><strong><a href='https:/github.com/ddfreyne/cri'>CRI</a></strong> - Create simple or command-suites with a syntax that is a mix of main and GLI.</li>
+<a name='gem-childprocess'></a>
+<li><strong><a href='https://github.com/jarib/childprocess'>Childprocess</a></strong> - Cross-platform ruby library for managing child processes</li>
+<a name='gem-choice'></a>
+<li><strong><a href='https:/github.com/defunkt/choice'>Choice</a></strong> - Command-line parser for simple command-line apps</li>
+<a name='gem-commandlinereporter'></a>
+<li><strong><a href='https://github.com/wbailey/command_line_reporter'>Command_line_reporter</a></strong> - Create a &#8220;report&#8221;, using unicode characters in the output for tables</li>
+<a name='gem-commander'></a>
+<li><strong><a href='https:/github.com/visionmedia/commander'>Commander</a></strong> - Create command suites with a rake-like syntax</li>
+<a name='gem-construct'></a>
+<li><strong><a href='https:/github.com/devver/construct'>Construct</a></strong> - Create temporary directory structure for testing</li>
+<a name='gem-fakefs'></a>
+<li><strong><a href='https:/github.com/defunkt/fakefs'>FakeFS</a></strong> - Fakes out various `File` and related calls to simulate a filesystem without changing system files.</li>
+<a name='gem-formatador'></a>
+<li><strong><a href='https:/github.com/geemus/formatador'>Formatador</a></strong> - produce rich output with a tag-like string syntax, including tables and progressbars</li>
+<a name='gem-gli'></a>
+<li><strong><a href='http://github.com/davetron5000/gli'>GLI</a></strong> - Create awesome, polished command suites without a lot of code</li>
+<a name='gem-gemman'></a>
+<li><strong><a href='https://github.com/defunkt/gem-man'>Gem-man</a></strong> - Read man pages installed with gems a la `man`</li>
+<a name='gem-highline'></a>
+<li><strong><a href='https:/github.com/JEG2/highline'>Highline</a></strong> - handle user input and output via a &#8220;Q&A&#8221; style API, including type conversions and validation</li>
+<a name='gem-main'></a>
+<li><strong><a href='http://github.com/ahoward/main'>Main</a></strong> - A class factory and DSL for generating command line programs real quick.</li>
+<a name='gem-methadone'></a>
+<li><strong><a href='http://www.github.com/davetron5000/methadone'>Methadone</a></strong> - Bootstrap your command line app, get all the power of `OptionParser`, but none of the verbosity</li>
+<a name='gem-mixlib'></a>
+<li><strong><a href='https:/github.com/opscode/mixlib-cli'>Mixlib-CLI</a></strong> - Maintained by Opscode, the maintainers of chef, this can create simple command-line apps in a readable, if verbose, syntax</li>
+<a name='gem-open4'></a>
+<li><strong><a href='https://github.com/ahoward/open4'>Open4</a></strong> - Open3-like library for Ruby 1.8</li>
+<a name='gem-optitron'></a>
+<li><strong><a href='https:/github.com/joshbuddy/optitron'>Optitron</a></strong> - Create command-suites based on classes and methods, similar to thor.</li>
+<a name='gem-paint'></a>
+<li><strong><a href='https:/github.com/janlelis/paint'>Paint</a></strong> - Color your output using RGB, with support for 256-color terminals</li>
+<a name='gem-progress_bar'></a>
+<li><strong><a href='https:/github.com/paul/progress_bar'>ProgressBar</a></strong> - create progress bars in terminal output</li>
+<a name='gem-rainbow'></a>
+<li><strong><a href='https://github.com/sickill/rainbow'>Rainbow</a></strong> - Create colored output</li>
+<a name='gem-ronn'></a>
+<li><strong><a href='https://github.com/rtomayko/ronn'>Ronn</a></strong> - Author man pages in Markdown</li>
+<a name='gem-slop'></a>
+<li><strong><a href='https:/github.com/injekt/slop'>Slop</a></strong> - Create simple command-line apps with a syntax similar to trollop.</li>
+<a name='gem-termansicolor'></a>
+<li><strong><a href='https:/github.com/flori/term-ansicolor.git'>Term-ansicolor</a></strong> - Create colored output</li>
+<a name='gem-terminaltable'></a>
+<li><strong><a href='https://github.com/visionmedia/terminal-table'>Terminal-Table</a></strong> - Create ASCII tables in your output, similar to a SQL clienbt</li>
+<a name='gem-thor'></a>
+<li><strong><a href='http://www.github.com/wycats/thor'>Thor</a></strong> - Create a command-suite app simply and easily, as well as Rails generators</li>
+<a name='gem-trollop'></a>
+<li><strong><a href='http://trollop.rubyforge.org'>Trollop</a></strong> - Parse the command-line idiomatically without a lot of code</li>
+</ul>
+
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T21:15:00-04:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.awesomecommandlinesapps.com/gems.html" data-via="davetron5000" data-counturl="http://www.awesomecommandlinesapps.com/gems.html" >Tweet</a>
+  
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <p>
+  <a href="http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby"><img class="center" src="http://imagery.pragprog.com/products/249/dccar_xlargebeta.jpg?1319573406"></a>
+  </p>
+</section>
+<section>
+  <h1>About Dave</h1>
+  <p>
+  <img class="left" src="http://www.gravatar.com/avatar/ae52d95bbc43d0a62044a9a6b5674de0.png">
+  I'm a veteran professional software developer who spends most of my time on the command line. I speak frequently at national and regional conferences and spend my days as a developer for LivingSocial in Washington, DC.
+  I've written applications in C, C++, Perl, Ruby, Scala, and many others, always using the command line in some form or other.
+  As a developer, I believe in clean code, doing it right, providing a great user experience and using the right tool for the job.
+  </p>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("davetron5000", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/davetron5000" class="twitter-follow-button" data-show-count="false">Follow @davetron5000</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - David Bryant Copeland -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

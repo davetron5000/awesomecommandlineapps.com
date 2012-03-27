@@ -371,3 +371,53 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
+
+desc "generate gems page"
+task :gems_page do
+  head = File.open("source/gems_head.markdown").read
+  require 'yaml'
+  gems = YAML.load_file('gems.yml')
+  File.open("source/gems.markdown","w") do |file|
+    file.puts head
+    file.puts
+    by_tag = {}
+    gems.each do |key,value| 
+      value[:tags].each do |_| 
+        by_tag[_.to_s] ||= []
+        by_tag[_.to_s] << key 
+      end
+    end
+    file.puts
+    file.puts "### By Category"
+    file.puts by_tag.sort.map { |tag,commands|
+      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI")
+      "<a href='#tag-#{tag}'>#{tag_human}</a>"
+    }.join(" | ")
+    file.puts
+    by_tag.sort.each do |tag,commands|
+      next if tag == :recommended
+      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI")
+      file.puts
+      file.puts "<a name='tag-#{tag}'></a>"
+      file.puts "#### #{tag_human}"
+      commands.each do |command|
+        file.puts "* <a href='#gem-#{command}'>#{gems[command][:name]}</a>"
+      end
+    end
+    file.puts
+    file.puts
+    file.puts
+    file.puts
+    file.puts
+    file.puts
+    file.puts "<a name='alpha'></a>"
+    file.puts "### By Name"
+    file.puts "<ul>"
+    gems.keys.sort { |a,b| gems[a][:name] <=> gems[b][:name] }.each do |gem_name|
+      gem = gems[gem_name]
+      file.puts "<a name='gem-#{gem_name}'></a>"
+      file.puts "<li><strong><a href='#{gem[:url]}'>#{gem[:name]}</a></strong> - #{gem[:description]}</li>"
+    end
+    file.puts "</ul>"
+  end
+end

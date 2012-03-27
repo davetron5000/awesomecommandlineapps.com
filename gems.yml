@@ -1,0 +1,201 @@
+--- 
+:methadone: 
+  :name: Methadone
+  :url: http://www.github.com/davetron5000/methadone
+  :description: Bootstrap your command line app, get all the power of `OptionParser`, but none of the verbosity
+  :tags: 
+  - :framework
+  - :parsing
+  - :subprocess
+  - :simple
+  - :inbook
+  - :recommended
+:thor: 
+  :name: Thor
+  :url: http://www.github.com/wycats/thor
+  :description: Create a command-suite app simply and easily, as well as Rails generators
+  :tags: 
+  - :framework
+  - :parsing
+  - :simple
+  - :command_suite
+  - :inbook
+:trollop:
+  :name: Trollop
+  :url: http://trollop.rubyforge.org
+  :description: Parse the command-line idiomatically without a lot of code
+  :tags:
+  - :parsing
+  - :simple
+  - :inbook
+:main:
+  :name: Main
+  :url: http://github.com/ahoward/main
+  :description: A class factory and DSL for generating command line programs real quick.
+  :tags:
+  - :parsing
+  - :simple
+  - :command_suite
+  - :inbook
+  - :recommended
+:gli:
+  :name: GLI
+  :url: http://github.com/davetron5000/gli
+  :description: Create awesome, polished command suites without a lot of code
+  :tags:
+  - :parsing
+  - :command_suite
+  - :framework
+  - :inbook
+  - :recommended
+:choice:
+  :name: Choice
+  :url: https:/github.com/defunkt/choice
+  :description: Command-line parser for simple command-line apps
+  :tags:
+  - :parsing
+  - :simple
+:commander:
+  :name: Commander
+  :url: https:/github.com/visionmedia/commander
+  :description: Create command suites with a rake-like syntax
+  :tags:
+  - :parsing
+  - :command_suite
+:cri:
+  :name: CRI
+  :url: https:/github.com/ddfreyne/cri
+  :description: Create simple or command-suites with a syntax that is a mix of main and GLI.
+  :tags:
+  - :parsing
+  - :command_suite
+  - :simple
+:mixlib:
+  :name: Mixlib-CLI 
+  :url: https:/github.com/opscode/mixlib-cli
+  :description: Maintained by Opscode, the maintainers of chef, this can create simple command-line apps in a readable, if verbose, syntax
+  :tags:
+  - :parsing
+  - :simple
+:optitron:
+  :name: Optitron
+  :url: https:/github.com/joshbuddy/optitron
+  :description: Create command-suites based on classes and methods, similar to thor.
+  :tags:
+  - :command_suite
+  - :parsing
+:slop:
+  :name: Slop
+  :url: https:/github.com/injekt/slop
+  :description: Create simple command-line apps with a syntax similar to trollop.
+  :tags:
+  - :simple
+  - :parsing
+:formatador:
+  :name: Formatador
+  :url: https:/github.com/geemus/formatador 
+  :description: produce rich output with a tag-like string syntax, including tables and progressbars
+  :tags:
+  - :ui
+  - :progressbar
+  - :table
+:highline:
+  :name: Highline
+  :url: https:/github.com/JEG2/highline
+  :description: handle user input and output via a "Q&A" style API, including type conversions and validation
+  :tags:
+  - :ui
+  - :user_io
+  - :validation
+:paint:
+  :name: Paint
+  :url: https:/github.com/janlelis/paint
+  :description: Color your output using RGB, with support for 256-color terminals
+  :tags:
+  - :ui
+  - :colored_output
+:progress_bar:
+  :name: ProgressBar
+  :url: https:/github.com/paul/progress_bar
+  :description: create progress bars in terminal output
+  :tags:
+  - :ui
+  - :progressbar
+:termansicolor:
+  :name: Term-ansicolor
+  :url: https:/github.com/flori/term-ansicolor.git
+  :description: Create colored output
+  :tags:
+  - :ui
+  - :colored_output
+:rainbow:
+  :name: Rainbow
+  :url: https://github.com/sickill/rainbow
+  :description: Create colored output
+  :tags:
+  - :ui
+  - :colored_output
+  - :recommended
+  - :inbook
+:terminaltable:
+  :name: Terminal-Table
+  :url: https://github.com/visionmedia/terminal-table
+  :description: Create ASCII tables in your output, similar to a SQL clienbt
+  :tags:
+  - :ui
+  - :inbook
+  - :table
+:commandlinereporter:
+  :name: Command_line_reporter
+  :url: https://github.com/wbailey/command_line_reporter
+  :description: Create a "report", using unicode characters in the output for tables
+  :tags:
+  - :ui
+  - :recommended
+  - :table
+:construct:
+  :name: Construct
+  :url: https:/github.com/devver/construct
+  :description: Create temporary directory structure for testing
+  :tags:
+  - :testing
+:fakefs:
+  :name: FakeFS
+  :url: https:/github.com/defunkt/fakefs
+  :description: Fakes out various `File` and related calls to simulate a filesystem without changing system files.
+  :tags:
+  - :testing
+:aruba:
+  :name: Aruba
+  :url: https://github.com/cucumber/aruba
+  :description: Test your command-line app with Cucumber
+  :tags:
+  - :testing
+:childprocess:
+  :name: Childprocess
+  :url: https://github.com/jarib/childprocess
+  :description: Cross-platform ruby library for managing child processes
+  :tags:
+  - :subprocess
+:open4:
+  :name: Open4
+  :url: https://github.com/ahoward/open4
+  :description: Open3-like library for Ruby 1.8
+  :tags:
+  - :subprocess
+:gemman:
+  :name: Gem-man
+  :url: https://github.com/defunkt/gem-man
+  :description: Read man pages installed with gems a la `man`
+  :tags:
+  - :documentation
+  - :inbook
+  - :recommended
+:ronn:
+  :name: Ronn
+  :url: https://github.com/rtomayko/ronn
+  :description: Author man pages in Markdown
+  :tags:
+  - :documentation
+  - :inbook
+  - :recommended
