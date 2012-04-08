@@ -49,6 +49,7 @@ end
 
 desc "Generate jekyll site"
 task :generate do
+  Rake::Task[:gems_page].execute
   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
   puts "## Generating Site with Jekyll"
   system "compass compile --css-dir #{source_dir}/stylesheets"
@@ -374,6 +375,7 @@ end
 
 desc "generate gems page"
 task :gems_page do
+  puts "## Generating gems page from YAML file"
   head = File.open("source/gems_head.markdown").read
   require 'yaml'
   gems = YAML.load_file('gems.yml')
@@ -389,13 +391,13 @@ task :gems_page do
     end
     file.puts
     file.puts by_tag.sort.map { |tag,commands|
-      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI")
+      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI").gsub("Inbook","In Book")
       "<a href='#tag-#{tag}'>#{tag_human}</a>"
     }.join(" | ")
     file.puts
     by_tag.sort.each do |tag,commands|
       next if tag == :recommended
-      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI")
+      tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI").gsub("Inbook","In Book")
       file.puts
       file.puts "<a name='tag-#{tag}'></a>"
       file.puts "#### #{tag_human}"

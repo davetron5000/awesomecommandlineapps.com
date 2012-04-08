@@ -15,7 +15,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 
 
 
-<a href='#tag-colored_output'>Colored Output</a> | <a href='#tag-command_suite'>Command Suite</a> | <a href='#tag-documentation'>Documentation</a> | <a href='#tag-framework'>Framework</a> | <a href='#tag-inbook'>Inbook</a> | <a href='#tag-parsing'>Parsing</a> | <a href='#tag-progressbar'>Progressbar</a> | <a href='#tag-recommended'>Recommended</a> | <a href='#tag-simple'>Simple</a> | <a href='#tag-subprocess'>Subprocess</a> | <a href='#tag-table'>Table</a> | <a href='#tag-testing'>Testing</a> | <a href='#tag-ui'>UI</a> | <a href='#tag-user_io'>User I/O</a> | <a href='#tag-validation'>Validation</a>
+<a href='#tag-colored_output'>Colored Output</a> | <a href='#tag-command_suite'>Command Suite</a> | <a href='#tag-documentation'>Documentation</a> | <a href='#tag-framework'>Framework</a> | <a href='#tag-inbook'>In Book</a> | <a href='#tag-parsing'>Parsing</a> | <a href='#tag-progressbar'>Progressbar</a> | <a href='#tag-recommended'>Recommended</a> | <a href='#tag-simple'>Simple</a> | <a href='#tag-subprocess'>Subprocess</a> | <a href='#tag-table'>Table</a> | <a href='#tag-testing'>Testing</a> | <a href='#tag-ui'>UI</a> | <a href='#tag-user_io'>User I/O</a> | <a href='#tag-validation'>Validation</a>
 
 
 <a name='tag-colored_output'></a>
@@ -45,7 +45,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='http://github.com/davetron5000/gli'>GLI</a> - Create awesome, polished command suites without a lot of code
 
 <a name='tag-inbook'></a>
-#### Inbook
+#### In Book
 * <a href='http://www.github.com/davetron5000/methadone'>Methadone</a> - Bootstrap your command line app, get all the power of `OptionParser`, but none of the verbosity
 * <a href='http://www.github.com/wycats/thor'>Thor</a> - Create a command-suite app simply and easily, as well as Rails generators
 * <a href='http://trollop.rubyforge.org'>Trollop</a> - Parse the command-line idiomatically without a lot of code
