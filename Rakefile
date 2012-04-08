@@ -388,7 +388,6 @@ task :gems_page do
       end
     end
     file.puts
-    file.puts "### By Category"
     file.puts by_tag.sort.map { |tag,commands|
       tag_human = tag.split('_').map {|_| _.capitalize }.join(' ').gsub("Io","I/O").gsub("Ui","UI")
       "<a href='#tag-#{tag}'>#{tag_human}</a>"
@@ -401,23 +400,8 @@ task :gems_page do
       file.puts "<a name='tag-#{tag}'></a>"
       file.puts "#### #{tag_human}"
       commands.each do |command|
-        file.puts "* <a href='#gem-#{command}'>#{gems[command][:name]}</a>"
+        file.puts "* <a href='#{gems[command][:url]}'>#{gems[command][:name]}</a> - #{gems[command][:description]}"
       end
     end
-    file.puts
-    file.puts
-    file.puts
-    file.puts
-    file.puts
-    file.puts
-    file.puts "<a name='alpha'></a>"
-    file.puts "### By Name"
-    file.puts "<ul>"
-    gems.keys.sort { |a,b| gems[a][:name] <=> gems[b][:name] }.each do |gem_name|
-      gem = gems[gem_name]
-      file.puts "<a name='gem-#{gem_name}'></a>"
-      file.puts "<li><strong><a href='#{gem[:url]}'>#{gem[:name]}</a></strong> - #{gem[:description]}</li>"
-    end
-    file.puts "</ul>"
   end
 end
