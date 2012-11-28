@@ -199,3 +199,10 @@
   - :documentation
   - :inbook
   - :recommended
+:table_print:
+  :name: table_print
+  :url: https://github.com/arches/table_print
+  :description: Turn objects into nicely formatted columns for easy reading - works great in Rails console with flexible formatting options
+  :tags:
+  - :ui
+  - :table

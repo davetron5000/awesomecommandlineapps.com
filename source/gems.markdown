@@ -107,6 +107,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='https:/github.com/geemus/formatador'>Formatador</a> - produce rich output with a tag-like string syntax, including tables and progressbars
 * <a href='https://github.com/visionmedia/terminal-table'>Terminal-Table</a> - Create ASCII tables in your output, similar to a SQL clienbt
 * <a href='https://github.com/wbailey/command_line_reporter'>Command_line_reporter</a> - Create a "report", using unicode characters in the output for tables
+* <a href='https://github.com/arches/table_print'>table_print</a> - Turn objects into nicely formatted columns for easy reading - works great in Rails console with flexible formatting options
 
 <a name='tag-testing'></a>
 #### Testing
@@ -124,6 +125,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='https://github.com/sickill/rainbow'>Rainbow</a> - Create colored output
 * <a href='https://github.com/visionmedia/terminal-table'>Terminal-Table</a> - Create ASCII tables in your output, similar to a SQL clienbt
 * <a href='https://github.com/wbailey/command_line_reporter'>Command_line_reporter</a> - Create a "report", using unicode characters in the output for tables
+* <a href='https://github.com/arches/table_print'>table_print</a> - Turn objects into nicely formatted columns for easy reading - works great in Rails console with flexible formatting options
 
 <a name='tag-user_io'></a>
 #### User I/O
