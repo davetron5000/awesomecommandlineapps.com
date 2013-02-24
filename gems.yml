@@ -206,3 +206,10 @@
   :tags:
   - :ui
   - :table
+:executable:
+  :name: executable
+  :url: http://rubyworks.github.com/executable/
+  :description: Executable is to commandline what ActiveRecord is to the database
+  :tags:
+  - :framework
+  - :parsing
