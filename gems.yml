@@ -219,3 +219,10 @@
   :description: A very simple cli method for parsing command line options.
   :tags:
   - :parsing
+:clap:
+  :name: clap
+  :description: Command line argument parsing for simple applications.
+  :url: https://github.com/soveran/clap
+  :tags:
+  - :parsing
+

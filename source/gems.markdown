@@ -72,6 +72,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='https:/github.com/injekt/slop'>Slop</a> - Create simple command-line apps with a syntax similar to trollop.
 * <a href='http://rubyworks.github.com/executable/'>executable</a> - Executable is to commandline what ActiveRecord is to the database
 * <a href='https://github.com/rubyworks/clik'>CLI.K</a> - A very simple cli method for parsing command line options.
+* <a href='https://github.com/soveran/clap'>clap</a> - Command line argument parsing for simple applications.
 
 <a name='tag-progressbar'></a>
 #### Progressbar
