@@ -213,3 +213,9 @@
   :tags:
   - :framework
   - :parsing
+:clik:
+  :name: CLI.K
+  :url: https://github.com/rubyworks/clik
+  :description: A very simple cli method for parsing command line options.
+  :tags:
+  - :parsing
