@@ -225,4 +225,12 @@
   :url: https://github.com/soveran/clap
   :tags:
   - :parsing
+:escort:
+  :name: Escort
+  :description: "A library that makes building command-line apps in ruby so easy, you'll feel like an expert is guiding you through it"
+  :url: https://github.com/skorks/escort
+  :tags:
+  - :parsing
+  - :framework
+  - :command_suite
 

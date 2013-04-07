@@ -32,6 +32,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='https:/github.com/visionmedia/commander'>Commander</a> - Create command suites with a rake-like syntax
 * <a href='https:/github.com/ddfreyne/cri'>CRI</a> - Create simple or command-suites with a syntax that is a mix of main and GLI.
 * <a href='https:/github.com/joshbuddy/optitron'>Optitron</a> - Create command-suites based on classes and methods, similar to thor.
+* <a href='https://github.com/skorks/escort'>Escort</a> - A library that makes building command-line apps in ruby so easy, you'll feel like an expert is guiding you through it
 
 <a name='tag-documentation'></a>
 #### Documentation
@@ -44,6 +45,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='http://www.github.com/wycats/thor'>Thor</a> - Create a command-suite app simply and easily, as well as Rails generators
 * <a href='http://github.com/davetron5000/gli'>GLI</a> - Create awesome, polished command suites without a lot of code
 * <a href='http://rubyworks.github.com/executable/'>executable</a> - Executable is to commandline what ActiveRecord is to the database
+* <a href='https://github.com/skorks/escort'>Escort</a> - A library that makes building command-line apps in ruby so easy, you'll feel like an expert is guiding you through it
 
 <a name='tag-inbook'></a>
 #### In Book
@@ -73,6 +75,7 @@ gems for writing command-line apps.  This page is an attempt to catalog them all
 * <a href='http://rubyworks.github.com/executable/'>executable</a> - Executable is to commandline what ActiveRecord is to the database
 * <a href='https://github.com/rubyworks/clik'>CLI.K</a> - A very simple cli method for parsing command line options.
 * <a href='https://github.com/soveran/clap'>clap</a> - Command line argument parsing for simple applications.
+* <a href='https://github.com/skorks/escort'>Escort</a> - A library that makes building command-line apps in ruby so easy, you'll feel like an expert is guiding you through it
 
 <a name='tag-progressbar'></a>
 #### Progressbar
