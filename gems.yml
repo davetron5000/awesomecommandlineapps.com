@@ -233,4 +233,10 @@
   - :parsing
   - :framework
   - :command_suite
-
+:sysexits:
+  :name: sysexits
+  :description: Constants for canonical UNIX system exit codes
+  :url: https://github.com/ged/sysexits
+  :tags:
+  - :simple
+  - :command_suite
