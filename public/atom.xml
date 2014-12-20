@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Build Awesome Command-Line Applications in Ruby]]></title>
+  <title><![CDATA[Build Awesome Command-Line Applications in Ruby 2]]></title>
   <link href="http://www.awesomecommandlinesapps.com/atom.xml" rel="self"/>
   <link href="http://www.awesomecommandlinesapps.com/"/>
-  <updated>2013-11-15T10:50:52-05:00</updated>
+  <updated>2014-12-20T13:15:17-05:00</updated>
   <id>http://www.awesomecommandlinesapps.com/</id>
   <author>
     <name><![CDATA[David Bryant Copeland]]></name>
