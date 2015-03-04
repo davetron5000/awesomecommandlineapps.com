@@ -240,3 +240,11 @@
   :tags:
   - :simple
   - :command_suite
+:cmdparse:
+  :name: cmdparse
+  :description: "An advanced command line parser using optparse which has support for commands"
+  :url: https://github.com/gettalong/cmdparse/
+  :tags:
+    - :command_suite
+    - :framework
+    - :parsing
